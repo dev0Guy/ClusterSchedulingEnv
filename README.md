@@ -31,6 +31,9 @@ This wrapper promotes efficient job scheduling by penalizing prolonged delays in
 ```math
 S_i = S_i + \mathbb{1}_{\text{Pending}, i}(t)
 ```
+```math
+R(t) = -\sum_{i=1}^N \frac{1}{S_i} \quad \text{where } S_i > 0
+```
 
 ### Env Wrapper
 
