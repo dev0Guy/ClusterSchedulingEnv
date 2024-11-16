@@ -1,4 +1,3 @@
-from typing import Any
 from tianshou.highlevel.experiment import DQNExperimentBuilder, ExperimentConfig
 from tianshou.highlevel.env import (
     EnvFactoryRegistered,
@@ -15,7 +14,8 @@ import gymnasium as gym
 import logging
 import clusterenv.envs
 from tianshou.utils.net.common import NetBase, TRecurrentState
-import torch, numpy as np
+import torch
+import numpy as np
 from clusterenv.utils.netowrks import IntermediateModuleFactoryClusterDQN
 
 logging.basicConfig(

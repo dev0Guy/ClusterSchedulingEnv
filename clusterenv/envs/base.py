@@ -90,7 +90,6 @@ class ClusterEnv(gym.Env[dict, np.ndarray]):
 
     def render(self) -> RenderFrame | list[RenderFrame] | None:
         super().render()
-        pass
 
     def generate_cluster_observation_shape(self, high: float) -> gym.spaces.Dict:
         jobs_shape = gym.spaces.Box(
