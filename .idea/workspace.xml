@@ -5,34 +5,9 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="c71738ac-174e-44d6-89c2-3fd57f08c65c" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/.gitignore" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/drl.iml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/inspectionProfiles/profiles_settings.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/ruff.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/drl/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/drl/envs/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/drl/envs/base.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/drl/envs/common/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/drl/envs/common/typing.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/drl/envs/dilation_example.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/drl/envs/wrappers/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/drl/envs/wrappers/action.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/drl/envs/wrappers/env.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/drl/envs/wrappers/observation.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/drl/envs/wrappers/reward.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/drl/scripts/dqn.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/drl/scripts/regular/dqn.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/drl/utils/netowrks.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/drl/utils/wrappers.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/example.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/main.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/poetry.lock" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/pyproject.toml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pyproject.toml" beforeDir="false" afterPath="$PROJECT_DIR$/pyproject.toml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -201,7 +176,7 @@
       <updated>1731664102349</updated>
       <workItem from="1731664106410" duration="10046000" />
       <workItem from="1731744914012" duration="1007000" />
-      <workItem from="1731749206238" duration="2651000" />
+      <workItem from="1731749206238" duration="2945000" />
     </task>
     <servers />
   </component>
