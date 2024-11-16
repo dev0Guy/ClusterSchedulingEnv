@@ -25,7 +25,5 @@ class CombineMachinJobWrapper(ObservationWrapper):
         )
 
     def observation(self, observation: dict[str, np.ndarray]) -> np.ndarray:
-        jobs = observation["jobs"]
-        machines = observation["machines"]
         combined_observation = np.concatenate([observation['jobs'], observation['machines']], axis=0)
         return combined_observation

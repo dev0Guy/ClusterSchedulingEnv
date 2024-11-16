@@ -4,13 +4,49 @@ The `ClusterEnv` environment is a simulation of a cluster system designed to man
 on machines with limited resources. It is built using the `gymnasium` library and supports custom configurations for jobs, machines, and resources.
 
 
+## Wrappers
+
+### Observation Wrapper
+
+#### CombineMachinJobWrapper
+The wrapper combines two separate observation components, jobs and machines, into a single unified observation space. 
+Here’s a detailed explanation of its functionality:
+
+### Action Wrapper
+
+#### DiscreteActionWrapper
+The wrapper simplifies the action space by converting it into a discrete set of actions, 
+enabling agents to operate within a simpler action space. Here’s a detailed breakdown of its functionality:
+In the ClusterEnv, the default action space may involve complex multi-dimensional actions, such as specifying machine-job pairings or time management commands. This wrapper:
+1.	Converts the action space into a discrete space of size  `(J * M + 1)`: 
+     - additional action represents a “skip time” operation.
+     - The remaining actions represent all possible combinations of jobs and machines.
+2.	Transforms a discrete action into a corresponding multi-dimensional action understandable by the ClusterEnv
+### Reward Wrapper
+#### TODO:
+
+### Env Wrapper
+
+#### ScheduleFromSelectedTimeWrapper
+The wrapper customizes job scheduling in the ClusterEnv by dynamically validating and scheduling jobs based on resource availability
+and arrival times. It ensures jobs are scheduled only if sufficient resources are available on the target machine for 
+the required duration using a sliding window approach. The wrapper updates machine resource states upon successful scheduling, preventing
+over-allocation or invalid assignments. This ensures efficient resource utilization and supports dynamic scheduling in resource-constrained environments.
+
+#### QueueWrapper
+The wrapper modifies the ClusterEnv to focus on a subset of jobs (queue_size), sorting them by status and dynamically updating their order based 
+on priority (e.g., pending jobs). It adjusts the action space to reference only the selected subset of jobs and remaps 
+job indices in actions accordingly. The observation space is modified to include only the top queue_size jobs and their statuses, ensuring that the agent operates on the most relevant subset.
+This wrapper streamlines decision-making by reducing complexity while prioritizing pending jobs for scheduling.
+
+
+## Extra Information
+
 ### Notations:
 -   **J** : Number of jobs
 -   **R:** Number of resources
 -   **T:** Number of ticks
 -   **A:** Job arrival rate 
-
-## Cluster Base (v0)
 
 ### Observation space
 The environment provides the following observation:
@@ -74,41 +110,3 @@ J_{i,k,t} = A_{i,t} \cdot R_{i,k}
 
 ### Machines Generation Process
 Each machine is reset with 255.0 of shape `(J,R,T)`
-
----
-
-## Features
-
-- **Customizable Cluster Configuration**:
-  - Number of machines
-  - Number of jobs
-  - Number of resources (e.g., CPU, RAM, Disk, Network)
-  - Maximum number of ticks (time steps)
-
-- **Observation Space**:
-  - Machine free space
-  - Job utilization
-  - Job status
-
-- **Action Space**:
-  - Time tick action (whether to increment time)
-  - Machine index for scheduling
-  - Job index for scheduling
-
-- **Metrics**:
-  - Tracks job states: Not Created, Pending, Running, Completed
-  - Ensures proper resource management across machines
-
----
-
-## Wrappers
-### Observation
-### Reward
-### Action
-## MORE...
-
-## Installation
-
-1. Install Python dependencies:
-   ```bash
-   pip install gymnasium numpy pydantic typing-extensions
