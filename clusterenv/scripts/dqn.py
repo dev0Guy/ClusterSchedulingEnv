@@ -25,9 +25,7 @@ logging.basicConfig(
 )
 
 
-def main(
-    
-):
+def main():
     env_id = "Cluster-discrete-v0"
     env = gym.make(env_id)
     print(env.observation_space)
@@ -72,7 +70,6 @@ def main(
         .build()
     )
     experiment.run()
-
 
 
 if __name__ == "__main__":

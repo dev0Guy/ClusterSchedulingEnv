@@ -28,14 +28,14 @@ class Net(nn.Module):
             nn.ReLU(inplace=True),
             nn.Flatten(),
             nn.Linear(32 * machine_shape[0] * machine_shape[2], 128),
-            nn.ReLU(inplace=True)
+            nn.ReLU(inplace=True),
         )
         self.job_net = nn.Sequential(
             nn.Conv2d(job_channels, 32, kernel_size=(3, 3), stride=1, padding=1),
             nn.ReLU(inplace=True),
             nn.Flatten(),
             nn.Linear(32 * job_shape[0] * job_shape[2], 128),
-            nn.ReLU(inplace=True)
+            nn.ReLU(inplace=True),
         )
         # Combine both outputs
         self.combined_net = nn.Sequential(
@@ -70,6 +70,7 @@ class Net(nn.Module):
 
         return logits, state
 
+
 def main() -> None:
     env_id = "Cluster-discrete-v0"
     train_envs = ts.env.DummyVectorEnv([lambda: gym.make(env_id) for _ in range(10)])
@@ -84,22 +85,30 @@ def main() -> None:
         action_space=action_shape,
         discount_factor=0.9,
         estimation_step=3,
-        target_update_freq=320
+        target_update_freq=320,
     )
-    train_collector = ts.data.Collector(policy, train_envs, ts.data.VectorReplayBuffer(2_000, 200),
-                                        exploration_noise=True)
+    train_collector = ts.data.Collector(
+        policy,
+        train_envs,
+        ts.data.VectorReplayBuffer(2_000, 200),
+        exploration_noise=True,
+    )
     test_collector = ts.data.Collector(policy, test_envs, exploration_noise=True)
     result = ts.trainer.OffpolicyTrainer(
         policy=policy,
         train_collector=train_collector,
         test_collector=test_collector,
-        max_epoch=10, step_per_epoch=10_000, step_per_collect=10,
-        update_per_step=0.1, episode_per_test=100, batch_size=64,
+        max_epoch=10,
+        step_per_epoch=10_000,
+        step_per_collect=10,
+        update_per_step=0.1,
+        episode_per_test=100,
+        batch_size=64,
         train_fn=lambda epoch, env_step: policy.set_eps(0.1),
         test_fn=lambda epoch, env_step: policy.set_eps(0.05),
     ).run()
     print(f'Finished training! Use {result["duration"]}')
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     main()

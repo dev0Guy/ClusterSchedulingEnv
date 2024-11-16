@@ -50,7 +50,9 @@ class DQN(NetBase[Any]):
             nn.Flatten(),
         )
         with torch.no_grad():
-            base_cnn_output_dim = int(np.prod(self.net(torch.zeros(1, c, h, w)).shape[1:]))
+            base_cnn_output_dim = int(
+                np.prod(self.net(torch.zeros(1, c, h, w)).shape[1:])
+            )
         if not features_only:
             action_dim = int(np.prod(action_shape))
             self.net = nn.Sequential(
@@ -83,18 +85,12 @@ class DQN(NetBase[Any]):
 
 
 class IntermediateModuleFactoryClusterDQN(IntermediateModuleFactory):
-    def __init__(
-        self, 
-        features_only: bool = False, 
-        net_only: bool = False
-    ) -> None:
+    def __init__(self, features_only: bool = False, net_only: bool = False) -> None:
         self.features_only = features_only
         self.net_only = net_only
 
     def create_intermediate_module(
-        self, 
-        envs: Environments, 
-        device: TDevice
+        self, envs: Environments, device: TDevice
     ) -> IntermediateModule:
         obs_shape = envs.get_observation_shape()
         if isinstance(obs_shape, int):

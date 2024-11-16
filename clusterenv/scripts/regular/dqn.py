@@ -112,7 +112,9 @@ def main(args: argparse.Namespace = get_args()) -> None:
         target_update_freq=args.target_update_freq,
     )
     if args.icm_lr_scale > 0:
-        feature_net = DQN(*args.state_shape, args.action_shape, args.device, features_only=True)
+        feature_net = DQN(
+            *args.state_shape, args.action_shape, args.device, features_only=True
+        )
         action_dim = np.prod(args.action_shape)
         feature_dim = feature_net.output_dim
         icm_net = IntrinsicCuriosityModule(
@@ -146,7 +148,9 @@ def main(args: argparse.Namespace = get_args()) -> None:
         stack_num=args.frames_stack,
     )
     # collector
-    train_collector = Collector[CollectStats](policy, train_envs, buffer, exploration_noise=True)
+    train_collector = Collector[CollectStats](
+        policy, train_envs, buffer, exploration_noise=True
+    )
     test_collector = Collector[CollectStats](policy, test_envs, exploration_noise=True)
 
     # log
@@ -183,7 +187,9 @@ def main(args: argparse.Namespace = get_args()) -> None:
     def train_fn(epoch: int, env_step: int) -> None:
         # nature DQN setting, linear decay in the first 1M steps
         if env_step <= 1e6:
-            eps = args.eps_train - env_step / 1e6 * (args.eps_train - args.eps_train_final)
+            eps = args.eps_train - env_step / 1e6 * (
+                args.eps_train - args.eps_train_final
+            )
         else:
             eps = args.eps_train_final
         policy.set_eps(eps)
@@ -213,7 +219,9 @@ def main(args: argparse.Namespace = get_args()) -> None:
                 save_only_last_obs=True,
                 stack_num=args.frames_stack,
             )
-            collector = Collector[CollectStats](policy, test_envs, buffer, exploration_noise=True)
+            collector = Collector[CollectStats](
+                policy, test_envs, buffer, exploration_noise=True
+            )
             result = collector.collect(n_step=args.buffer_size)
             print(f"Save buffer into {args.save_buffer_name}")
             # Unfortunately, pickle will cause oom with 1M buffer size

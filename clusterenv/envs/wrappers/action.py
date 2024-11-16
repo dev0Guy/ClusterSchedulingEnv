@@ -9,8 +9,10 @@ class DiscreteActionWrapper(ActionWrapper):
 
     def __init__(self, env: ClusterEnv):
         super().__init__(env)
-        queue_size = getattr(self,"queue_size", self.n_jobs)
-        number_of_actions: int = (self.n_machines * queue_size) + 1 # add null oprtation (skip time)
+        queue_size = getattr(self, "queue_size", self.n_jobs)
+        number_of_actions: int = (
+            self.n_machines * queue_size
+        ) + 1  # add null oprtation (skip time)
         self.action_space = gym.spaces.Discrete(number_of_actions, start=0)
 
     def action(self, action: int) -> np.ndarray:

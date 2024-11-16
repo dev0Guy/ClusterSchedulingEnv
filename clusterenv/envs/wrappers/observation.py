@@ -5,11 +5,10 @@ import gymnasium as gym
 
 
 class CombineMachinJobWrapper(ObservationWrapper):
-
     def __init__(self, env: ClusterEnv):
         super(CombineMachinJobWrapper, self).__init__(env)
-        jobs_space = env.observation_space.spaces['jobs']
-        machines_space = env.observation_space.spaces['machines']
+        jobs_space = env.observation_space.spaces["jobs"]
+        machines_space = env.observation_space.spaces["machines"]
         jobs_shape = jobs_space.shape  # (n_jobs, resource, ticks)
         machines_shape = machines_space.shape  # (n_machines, resource, ticks)
         combined_shape = (jobs_shape[0] + machines_shape[0],) + jobs_shape[1:]
@@ -21,9 +20,11 @@ class CombineMachinJobWrapper(ObservationWrapper):
             low=combined_low,
             high=combined_high,
             shape=combined_shape,
-            dtype=jobs_space.dtype
+            dtype=jobs_space.dtype,
         )
 
     def observation(self, observation: dict[str, np.ndarray]) -> np.ndarray:
-        combined_observation = np.concatenate([observation['jobs'], observation['machines']], axis=0)
+        combined_observation = np.concatenate(
+            [observation["jobs"], observation["machines"]], axis=0
+        )
         return combined_observation
