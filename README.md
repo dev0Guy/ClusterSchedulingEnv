@@ -32,12 +32,14 @@ where `TickActionOptions`: </br>
 
 ### Job Generation Process
 The following describes the mathematical process used to generate jobs:
-1. Job Arrival Times - Job arrival times are modeled as a Bernoulli process:
+1. **Job Arrival Times -** </br>
+Job arrival times are modeled as a Bernoulli process:
 ```math
 T_{\text{enter}, i} = \sum_{j=1}^{i} B_j, \quad B_j \sim \text{Bernoulli}(p)
 ```
 
-2. Job Durations - Job durations are sampled from a mixture of two uniform distributions:
+2. **Job Durations -** </br>
+Job durations are sampled from a mixture of two uniform distributions:
 ```math
 D_i = 
 \begin{cases} 
@@ -47,7 +49,8 @@ D_i =
 \quad \text{where} \quad U_i \sim \text{Uniform}(0, 1)
 ```
 
-3.  Resource Demands - Each job (i) is assigned resource demands based on its dominant resource:
+3.  **Resource Demands -** </br>
+Each job (i) is assigned resource demands based on its dominant resource:
 ```math
 R_{i,k} =
 \begin{cases} 
@@ -57,7 +60,8 @@ R_{i,k} =
 \quad \text{where} \quad R_{\text{dom}, i} \sim \text{Uniform}\{0, \text{n\_resources}-1\}
 ```
 
-4. Job Activity Over Time -Jobs are active based on their arrival times and durations:
+4. **Job Activity Over Time -** </br>
+Jobs are active based on their arrival times and durations:
 ```math
 A_{i,t} =
 \begin{cases}
@@ -66,7 +70,8 @@ A_{i,t} =
 \end{cases}
 ```
 
-5. Final Resource Utilization- The 3D array representing job resource utilization is calculated as:
+5. **Final Resource Utilization-** </br>
+The 3D array representing job resource utilization is calculated as:
 ```math
 J_{i,k,t} = A_{i,t} \cdot R_{i,k}
 J_{i,k,t} = A_{i,t} \cdot R_{i,k}
