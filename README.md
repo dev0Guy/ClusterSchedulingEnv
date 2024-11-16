@@ -22,7 +22,12 @@ In the ClusterEnv, the default action space may involve complex multi-dimensiona
      - The remaining actions represent all possible combinations of jobs and machines.
 2.	Transforms a discrete action into a corresponding multi-dimensional action understandable by the ClusterEnv
 ### Reward Wrapper
-#### TODO:
+
+#### AverageSlowDownReward
+custom Gymnasium RewardWrapper for the ClusterEnv environment that penalizes the agent based on the average slowdown of pending jobs. 
+It tracks the number of ticks that each job remains in the Pending state, incrementing a slowdown counter for such jobs at each clock tick. 
+The reward is calculated as the negative sum of the inverse of the slowdown values for all pending jobs, incentivizing the agent to prioritize reducing job slowdowns. 
+This wrapper promotes efficient job scheduling by penalizing prolonged delays in job execution.
 
 ### Env Wrapper
 

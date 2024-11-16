@@ -3,11 +3,11 @@ from .base import ClusterEnv
 from .wrappers import ScheduleFromSelectedTimeWrapper, DiscreteActionWrapper, QueueWrapper, CombineMachinJobWrapper
 
 
-SIMULATION_LENGTH: int = 10
+SIMULATION_LENGTH: int = 200
 DEFUALT_PARAMS: dict = dict(
-    n_machines=1,
-    n_jobs=10,
-    n_resources=2,
+    n_machines=5,
+    n_jobs=50,
+    n_resources=3,
     n_ticks=SIMULATION_LENGTH
 )
 

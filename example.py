@@ -3,6 +3,7 @@ import logging
 import gymnasium as gym
 from gymnasium.utils.env_checker import check_env
 import drl.envs
+from drl.envs.wrappers.reward import AverageSlowDownReward
 
 logging.basicConfig(
     level=logging.DEBUG,
@@ -11,14 +12,14 @@ logging.basicConfig(
 )
 
 id = "Cluster-discrete-v1"
-env = gym.make(id)
-check_env(env)
+env = AverageSlowDownReward(gym.make(id))
+# check_env(env)
 
-# obs, info = env.reset()
-# for _ in range(10_000):
-#     action = env.action_space.sample()
-#     obs,reward, done, truncated, info = env.step(action=action)
-#     logging.info(info)
-#     if done or truncated:
-#         print("FINISHED")
-#         break
+obs, info = env.reset()
+for _ in range(10_000):
+    action = env.action_space.sample()
+    obs,reward, done, truncated, info = env.step(action=action)
+    logging.info(info)
+    if done or truncated:
+        print("FINISHED")
+        break
