@@ -70,13 +70,6 @@ A_{i,t} =
 ```math
 J_{i,k,t} = A_{i,t} \cdot R_{i,k}
 J_{i,k,t} = A_{i,t} \cdot R_{i,k}
-\```
-
-
-By embedding the "where" clauses and explanations directly into the equations, the README will be more self-contained and readable. However, if the platform doesn’t render LaTeX equations (e.g., GitHub), you may need to either:
-1. Use plain Markdown with textual explanations.
-2. Include screenshots of rendered equations.
-3. Host rendered LaTeX equations elsewhere and link or embed images.
 ```
 ---
 ## Features
