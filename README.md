@@ -4,10 +4,10 @@ The `ClusterEnv` environment is a simulation of a cluster system designed to man
 on machines with limited resources. It is built using the `gymnasium` library and supports custom configurations for jobs, machines, and resources.
 ---
 ### Notations:
--   **J** : Number of jobs ( n\_jobs )
--   **R:** Number of resources ( n\_resources )
--   **T:** Number of ticks ( n\_ticks )
--   **A:** Job arrival rate ( \_job\_arrival\_rate )
+-   **J** : Number of jobs
+-   **R:** Number of resources
+-   **T:** Number of ticks
+-   **A:** Job arrival rate 
 -   **jobs\_array[j, r, t]:** Utilization of resource  r  by job  j  at time  t 
 -   **enter\_times[j]:** Time when job  j  arrives
 -   **duration[j]:** Duration of job  j 
