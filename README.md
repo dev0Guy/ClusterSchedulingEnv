@@ -36,10 +36,6 @@ The following describes the mathematical process used to generate jobs:
 ```math
 T_{\text{enter}, i} = \sum_{j=1}^{i} B_j, \quad B_j \sim \text{Bernoulli}(p)
 ```
-where:
-- ``` (T_{\text{enter}, i})``` is the arrival time of the (i)-th job.
-- ```(B_j)``` represents the outcome of the Bernoulli process ((1) if a job arrives, (0) otherwise).
-- ```(p)``` is the job arrival rate.
 
 2. Job Durations - Job durations are sampled from a mixture of two uniform distributions:
 ```math
@@ -48,21 +44,18 @@ D_i =
 \text{Uniform}(1, 3), & \text{if } U_i < 0.8 \\
 \text{Uniform}(10, 15), & \text{otherwise}
 \end{cases}
+\quad \text{where} \quad U_i \sim \text{Uniform}(0, 1)
 ```
-where:
-- ```(D_i)``` is the duration of the (i)-th job.
-- ```(U_i \sim \text{Uniform}(0, 1))``` determines if a job is short (80%) or long (20%).
-3. Resource Demands - Each job (i) is assigned resource demands based on its dominant resource:
+
+3.  Resource Demands - Each job (i) is assigned resource demands based on its dominant resource:
 ```math
 R_{i,k} =
 \begin{cases} 
 \text{Uniform}(127.5, 255), & \text{if } k = R_{\text{dom}, i} \\
 \text{Uniform}(25.5, 51), & \text{if } k \neq R_{\text{dom}, i}
 \end{cases}
+\quad \text{where} \quad R_{\text{dom}, i} \sim \text{Uniform}\{0, \text{n\_resources}-1\}
 ```
-where:
-- `(R_{i,k})` is the resource demand of job (i) for resource (k).
-- `(R_{\text{dom}, i})` is the dominant resource index for job (i).
 
 4. Job Activity Over Time -Jobs are active based on their arrival times and durations:
 ```math
@@ -72,20 +65,20 @@ A_{i,t} =
 0, & \text{otherwise}
 \end{cases}
 ```
-where:
-- (A_{i,t}) is a binary mask indicating whether job (i) is active at time (t).
 
 5. Final Resource Utilization- The 3D array representing job resource utilization is calculated as:
 ```math
 J_{i,k,t} = A_{i,t} \cdot R_{i,k}
+J_{i,k,t} = A_{i,t} \cdot R_{i,k}
+\```
+
+
+By embedding the "where" clauses and explanations directly into the equations, the README will be more self-contained and readable. However, if the platform doesn’t render LaTeX equations (e.g., GitHub), you may need to either:
+1. Use plain Markdown with textual explanations.
+2. Include screenshots of rendered equations.
+3. Host rendered LaTeX equations elsewhere and link or embed images.
 ```
-where:
-```math
-(J_{i,k,t}) is the resource demand of job (i) for resource (k) at time (t).
-```
-```math
-(A_{i,t}) ensures resource demands are applied only during active job periods.
-```
+---
 ## Features
 
 - **Customizable Cluster Configuration**:
