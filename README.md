@@ -28,6 +28,9 @@ custom Gymnasium RewardWrapper for the ClusterEnv environment that penalizes the
 It tracks the number of ticks that each job remains in the Pending state, incrementing a slowdown counter for such jobs at each clock tick. 
 The reward is calculated as the negative sum of the inverse of the slowdown values for all pending jobs, incentivizing the agent to prioritize reducing job slowdowns. 
 This wrapper promotes efficient job scheduling by penalizing prolonged delays in job execution.
+```math
+S_i = S_i + \mathbb{1}_{\text{Pending}, i}(t)
+```
 
 ### Env Wrapper
 
