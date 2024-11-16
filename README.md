@@ -3,7 +3,6 @@
 The `ClusterEnv` environment is a simulation of a cluster system designed to manage the scheduling and allocation of jobs 
 on machines with limited resources. It is built using the `gymnasium` library and supports custom configurations for jobs, machines, and resources.
 
----
 
 ### Notations:
 -   **J** : Number of jobs
