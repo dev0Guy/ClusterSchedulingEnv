@@ -1,6 +1,6 @@
 import gymnasium as gym
 import tianshou as ts
-import drl.envs
+import clusterenv.envs
 import torch, numpy as np
 from torch import nn
 

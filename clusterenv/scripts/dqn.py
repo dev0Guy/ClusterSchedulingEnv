@@ -13,10 +13,10 @@ from tianshou.highlevel.trainer import (
 )
 import gymnasium as gym
 import logging
-import drl.envs
+import clusterenv.envs
 from tianshou.utils.net.common import NetBase, TRecurrentState
 import torch, numpy as np
-from drl.utils.netowrks import IntermediateModuleFactoryClusterDQN
+from clusterenv.utils.netowrks import IntermediateModuleFactoryClusterDQN
 
 logging.basicConfig(
     level=logging.DEBUG,

@@ -8,7 +8,7 @@ from tianshou.highlevel.module.core import (
     TDevice,
 )
 from tianshou.utils.net.common import NetBase, TRecurrentState
-from drl.envs.base import ClusterEnv
+from clusterenv.envs.base import ClusterEnv
 from collections.abc import Callable, Sequence
 import numpy as np
 from torch import nn

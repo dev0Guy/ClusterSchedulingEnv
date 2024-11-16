@@ -1,7 +1,7 @@
 import numpy as np
 from gymnasium import ActionWrapper
 import gymnasium as gym
-from drl.envs import ClusterEnv
+from clusterenv.envs import ClusterEnv
 
 
 class DiscreteActionWrapper(ActionWrapper):

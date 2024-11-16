@@ -8,8 +8,8 @@ from gymnasium.core import RenderFrame
 from pydantic import Field, NonNegativeInt, PositiveInt
 from typing_extensions import Doc
 
-from drl.envs.common import CLUSTER_CELL_HIGH, Jobs, Machines
-from drl.envs.common.typing import IsSucceed, JobIndex, JobStatus, MachineIndex
+from clusterenv.envs.common import CLUSTER_CELL_HIGH, Jobs, Machines
+from clusterenv.envs.common.typing import IsSucceed, JobIndex, JobStatus, MachineIndex
 
 logger = logging.getLogger(__name__)
 

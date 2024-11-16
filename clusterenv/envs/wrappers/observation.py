@@ -1,5 +1,5 @@
 from gymnasium import ObservationWrapper
-from drl.envs.base import ClusterEnv
+from clusterenv.envs.base import ClusterEnv
 import numpy as np
 import gymnasium as gym
 

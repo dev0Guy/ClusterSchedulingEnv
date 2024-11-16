@@ -6,7 +6,7 @@ import numpy as np
 from pydantic import NonNegativeInt, PositiveInt
 from typing_extensions import Doc
 
-from drl.envs.common.typing import JobStatus, JobIndex
+from clusterenv.envs.common.typing import JobStatus, JobIndex
 
 CLUSTER_CELL_HIGH: float = 255.0
 

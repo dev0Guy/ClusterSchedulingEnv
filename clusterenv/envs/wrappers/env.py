@@ -2,12 +2,12 @@ import numpy as np
 from gymnasium import Wrapper
 from pydantic import PositiveInt
 
-from drl.envs import ClusterEnv
+from clusterenv.envs import ClusterEnv
 import typing as tp
 import gymnasium as gym
 
-from drl.envs.common import ClusterObservation, CLUSTER_CELL_HIGH
-from drl.envs.common.typing import ClusterBaseObservation, MachineIndex, JobIndex, IsSucceed
+from clusterenv.envs.common import ClusterObservation, CLUSTER_CELL_HIGH
+from clusterenv.envs.common.typing import ClusterBaseObservation, MachineIndex, JobIndex, IsSucceed
 
 
 class ScheduleFromSelectedTimeWrapper(Wrapper):

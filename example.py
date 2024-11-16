@@ -2,8 +2,8 @@ import logging
 
 import gymnasium as gym
 from gymnasium.utils.env_checker import check_env
-import drl.envs
-from drl.envs.wrappers.reward import AverageSlowDownReward
+import clusterenv.envs
+from clusterenv.envs.wrappers.reward import AverageSlowDownReward
 
 logging.basicConfig(
     level=logging.DEBUG,

@@ -2,8 +2,8 @@ from typing import SupportsFloat
 
 import numpy as np
 from gymnasium import RewardWrapper
-from drl.envs.base import ClusterEnv, logger
-from drl.envs.common import JobStatus
+from clusterenv.envs.base import ClusterEnv, logger
+from clusterenv.envs.common import JobStatus
 
 
 class AverageSlowDownReward(RewardWrapper):
