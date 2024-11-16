@@ -9,7 +9,7 @@ from pydantic import Field, NonNegativeInt, PositiveInt
 from typing_extensions import Doc
 
 from drl.envs.common import CLUSTER_CELL_HIGH, Jobs, Machines
-from drl.envs.common.typing import IsSucessed, JobIndex, JobStatus, MacineIndex
+from drl.envs.common.typing import IsSucceed, JobIndex, JobStatus, MachineIndex
 
 logger = logging.getLogger(__name__)
 
@@ -85,7 +85,7 @@ class ClusterEnv(gym.Env[dict, np.ndarray]):
             dict(machines=machines_shape, jobs=jobs_shape, status=job_status_shape)
         )
 
-    def validate_job_status(self, j: JobIndex) -> IsSucessed:
+    def validate_job_status(self, j: JobIndex) -> IsSucceed:
         job_status = self.jobs.status[j]
         arrival_time = self.jobs.arrival_time[j]
         if job_status != JobStatus.Pending:
@@ -99,9 +99,9 @@ class ClusterEnv(gym.Env[dict, np.ndarray]):
 
     def schedule(
             self,
-            m: MacineIndex,
+            m: MachineIndex,
             j: JobIndex,
-    ) -> IsSucessed:
+    ) -> IsSucceed:
         if not self.validate_job_status(j):
             return False
 

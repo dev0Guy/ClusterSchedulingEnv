@@ -7,7 +7,7 @@ import typing as tp
 import gymnasium as gym
 
 from drl.envs.common import ClusterObservation, CLUSTER_CELL_HIGH
-from drl.envs.common.typing import ClusterBaseOvservation, MacineIndex, JobIndex, IsSucessed
+from drl.envs.common.typing import ClusterBaseObservation, MachineIndex, JobIndex, IsSucceed
 
 
 class ScheduleFromSelectedTimeWrapper(Wrapper):
@@ -17,14 +17,14 @@ class ScheduleFromSelectedTimeWrapper(Wrapper):
         env.schedule = self.schedule
 
     def step(self, action: np.ndarray) -> tuple[
-        ClusterBaseOvservation, tp.SupportsFloat, bool, bool, dict[str, tp.Any]]:
+        ClusterBaseObservation, tp.SupportsFloat, bool, bool, dict[str, tp.Any]]:
         return super().step(action)
 
     def schedule(
         self,
-        m: MacineIndex,
+        m: MachineIndex,
         j: JobIndex,
-    ) -> IsSucessed:
+    ) -> IsSucceed:
         if not self.validate_job_status(j):
             return False
         job_arrival_time = max(self.jobs.arrival_time[j], self.current_clock_tick)
@@ -76,7 +76,7 @@ class QueueWrapper(Wrapper):
         j_idx = self.job_indexer[j_idx]
         return np.array([skip, m_idx, j_idx])
 
-    def modify_observation(self, observation: ClusterBaseOvservation) -> ClusterBaseOvservation:
+    def modify_observation(self, observation: ClusterBaseObservation) -> ClusterBaseObservation:
         """Remove jobs that are not inside the
         """
         observation = observation.copy()
