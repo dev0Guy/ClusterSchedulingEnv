@@ -37,7 +37,7 @@ The following describes the mathematical process used to generate jobs:
 T_{\text{enter}, i} = \sum_{j=1}^{i} B_j, \quad B_j \sim \text{Bernoulli}(p)
 ```
 where:
-- ```(T_{\text{enter}, i})``` is the arrival time of the (i)-th job.
+- ``` (T_{\text{enter}, i})``` is the arrival time of the (i)-th job.
 - ```(B_j)``` represents the outcome of the Bernoulli process ((1) if a job arrives, (0) otherwise).
 - ```(p)``` is the job arrival rate.
 
@@ -52,6 +52,36 @@ D_i =
 where:
 - ```(D_i)``` is the duration of the (i)-th job.
 - ```(U_i \sim \text{Uniform}(0, 1))``` determines if a job is short (80%) or long (20%).
+3. Resource Demands - Each job (i) is assigned resource demands based on its dominant resource:
+```math
+R_{i,k} =
+\begin{cases} 
+\text{Uniform}(127.5, 255), & \text{if } k = R_{\text{dom}, i} \\
+\text{Uniform}(25.5, 51), & \text{if } k \neq R_{\text{dom}, i}
+\end{cases}
+```
+where:
+- `(R_{i,k})` is the resource demand of job (i) for resource (k).
+- `(R_{\text{dom}, i})` is the dominant resource index for job (i).
+
+4. Job Activity Over Time -Jobs are active based on their arrival times and durations:
+```math
+A_{i,t} =
+\begin{cases}
+1, & \text{if } T_{\text{enter}, i} \leq t < T_{\text{enter}, i} + D_i \\
+0, & \text{otherwise}
+\end{cases}
+```
+where:
+- (A_{i,t}) is a binary mask indicating whether job (i) is active at time (t).
+
+5. Final Resource Utilization- The 3D array representing job resource utilization is calculated as:
+```math
+J_{i,k,t} = A_{i,t} \cdot R_{i,k}
+```
+where:
+- `(J_{i,k,t})` is the resource demand of job (i) for resource (k) at time (t).
+- `(A_{i,t})` ensures resource demands are applied only during active job periods.
 #### Job:
 
 #### Machines:
