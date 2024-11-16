@@ -37,9 +37,9 @@ The following describes the mathematical process used to generate jobs:
 T_{\text{enter}, i} = \sum_{j=1}^{i} B_j, \quad B_j \sim \text{Bernoulli}(p)
 ```
 where:
-- (T_{\text{enter}, i}) is the arrival time of the (i)-th job.
-- (B_j) represents the outcome of the Bernoulli process ((1) if a job arrives, (0) otherwise).
-- (p) is the job arrival rate.
+- ```(T_{\text{enter}, i})``` is the arrival time of the (i)-th job.
+- ```(B_j)``` represents the outcome of the Bernoulli process ((1) if a job arrives, (0) otherwise).
+- ```(p)``` is the job arrival rate.
 
 2. Job Durations - Job durations are sampled from a mixture of two uniform distributions:
 ```math
@@ -50,8 +50,8 @@ D_i =
 \end{cases}
 ```
 where:
-- (D_i) is the duration of the (i)-th job.
-- (U_i \sim \text{Uniform}(0, 1)) determines if a job is short (80%) or long (20%).
+- ```(D_i)``` is the duration of the (i)-th job.
+- ```(U_i \sim \text{Uniform}(0, 1))``` determines if a job is short (80%) or long (20%).
 #### Job:
 
 #### Machines:
