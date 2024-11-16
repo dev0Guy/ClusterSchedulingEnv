@@ -8,14 +8,7 @@ on machines with limited resources. It is built using the `gymnasium` library an
 -   **R:** Number of resources
 -   **T:** Number of ticks
 -   **A:** Job arrival rate 
--   **jobs\_array[j, r, t]:** Utilization of resource  r  by job  j  at time  t 
--   **enter\_times[j]:** Time when job  j  arrives
--   **duration[j]:** Duration of job  j 
--   **dominant\_resource[j]:** Dominant resource for job  j 
--   **res\_demand[j, r]:** Demand of resource  r  for job  j 
--   **mask[j, t]:** Boolean mask indicating whether job  j  is active at time  t 
 
----
 ## Cluster Base (v0)
 
 ### Observation space
@@ -77,7 +70,12 @@ The 3D array representing job resource utilization is calculated as:
 J_{i,k,t} = A_{i,t} \cdot R_{i,k}
 J_{i,k,t} = A_{i,t} \cdot R_{i,k}
 ```
+
+### Machines Generation Process
+Each machine is reset with 255.0 of shape `(J,R,T)`
+
 ---
+
 ## Features
 
 - **Customizable Cluster Configuration**:
@@ -101,6 +99,12 @@ J_{i,k,t} = A_{i,t} \cdot R_{i,k}
   - Ensures proper resource management across machines
 
 ---
+
+## Wrappers
+### Observation
+### Reward
+### Action
+## MORE...
 
 ## Installation
 
