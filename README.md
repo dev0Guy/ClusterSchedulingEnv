@@ -10,7 +10,6 @@ on machines with limited resources. It is built using the `gymnasium` library an
 
 #### CombineMachinJobWrapper
 The wrapper combines two separate observation components, jobs and machines, into a single unified observation space. 
-Here’s a detailed explanation of its functionality:
 
 ### Action Wrapper
 
