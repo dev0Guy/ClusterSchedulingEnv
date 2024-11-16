@@ -31,7 +31,8 @@ where `TickActionOptions`: </br>
 `1` - Increment time
 
 ### Job Generation Process
-The following describes the mathematical process used to generate jobs:
+
+**The following describes the mathematical process used to generate jobs**
 1. **Job Arrival Times -** </br>
 Job arrival times are modeled as a Bernoulli process:
 ```math
