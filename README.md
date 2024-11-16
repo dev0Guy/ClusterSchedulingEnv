@@ -58,7 +58,7 @@ R_{i,k} =
 \text{Uniform}(127.5, 255), & \text{if } k = R_{\text{dom}, i} \\
 \text{Uniform}(25.5, 51), & \text{if } k \neq R_{\text{dom}, i}
 \end{cases}
-\quad \text{where} \quad R_{\text{dom}, i} \sim \text{Uniform}\{0, \text{n\_resources}-1\}
+\quad \text{where} \quad R_{\text{dom}, i} \sim \text{Uniform}\{0, \text{R}-1\}
 ```
 
 4. **Job Activity Over Time -** </br>
