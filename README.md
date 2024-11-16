@@ -78,14 +78,12 @@ where:
 5. Final Resource Utilization- The 3D array representing job resource utilization is calculated as:
 ```math
 J_{i,k,t} = A_{i,t} \cdot R_{i,k}
-```
+
 where:
-- `(J_{i,k,t})` is the resource demand of job (i) for resource (k) at time (t).
-- `(A_{i,t})` ensures resource demands are applied only during active job periods.
-#### Job:
+- (J_{i,k,t}) is the resource demand of job (i) for resource (k) at time (t).
+- (A_{i,t}) ensures resource demands are applied only during active job periods.
 
-#### Machines:
-
+```
 ## Features
 
 - **Customizable Cluster Configuration**:
