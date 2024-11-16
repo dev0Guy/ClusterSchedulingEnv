@@ -81,7 +81,9 @@ J_{i,k,t} = A_{i,t} \cdot R_{i,k}
 ```
 ```math
 where:
+
 - (J_{i,k,t}) is the resource demand of job (i) for resource (k) at time (t).
+
 - (A_{i,t}) ensures resource demands are applied only during active job periods.
 ```
 ## Features
